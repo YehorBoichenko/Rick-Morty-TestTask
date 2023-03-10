@@ -10,6 +10,8 @@ import { saveToLocalStorage, getFromLocalStorage } from "../utils/storage";
 const CharacterListPage = () => {
   const [characters, setCharacters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [charactersPerPage, setCharactersPerPage] = useState(8);
 
   useEffect(() => {
     const storedSearchTerm = getFromLocalStorage("searchTerm");
@@ -19,7 +21,10 @@ const CharacterListPage = () => {
 
     const fetchCharactersData = async () => {
       const charactersData = await fetchCharacters();
-      const sortedCharacters = sortCharactersByName(charactersData);
+      const sortedCharacters = sortCharactersByName(
+        charactersData,
+        storedSearchTerm
+      );
       setCharacters(sortedCharacters);
     };
 
@@ -29,18 +34,36 @@ const CharacterListPage = () => {
   const handleSearch = (term) => {
     setSearchTerm(term);
     saveToLocalStorage("searchTerm", term);
+    setCurrentPage(1);
   };
 
-  const filteredCharacters = characters.filter((character) =>
-    character.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const sortedCharacters = sortCharactersByName(characters, searchTerm);
+
+  const indexOfLastCharacter = currentPage * charactersPerPage;
+  const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
+  const currentCharacters = sortedCharacters.slice(
+    indexOfFirstCharacter,
+    indexOfLastCharacter
   );
+
+  const totalPages = Math.ceil(sortedCharacters.length / charactersPerPage);
+
+  const onChangePage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
       <Header />
       <SearchBar value={searchTerm} onChange={handleSearch} />
-      <CharacterList characters={filteredCharacters} />
-      <Pagination />
+      <CharacterList characters={currentCharacters} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onChangePage={onChangePage}
+        itemsPerPage={charactersPerPage}
+        totalItems={sortedCharacters.length}
+      />
     </div>
   );
 };
