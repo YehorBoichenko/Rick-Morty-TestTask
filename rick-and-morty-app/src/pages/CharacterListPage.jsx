@@ -11,7 +11,7 @@ const CharacterListPage = () => {
   const [characters, setCharacters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [charactersPerPage, setCharactersPerPage] = useState(8);
+  const [charactersPerPage] = useState(8);
 
   useEffect(() => {
     const storedSearchTerm = getFromLocalStorage("searchTerm");
@@ -53,7 +53,7 @@ const CharacterListPage = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <Header />
       <SearchBar value={searchTerm} onChange={handleSearch} />
       <CharacterList characters={currentCharacters} />

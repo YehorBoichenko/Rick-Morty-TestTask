@@ -1,0 +1,95 @@
+@import "./base";
+// Define utility classes
+.mt-xs {
+  margin-top: 4px;
+}
+
+.mb-xs {
+  margin-bottom: 4px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: $font-weight-bold;
+}
+
+.font-size-xs {
+  font-size: $font-size-xs;
+}
+
+.font-size-sm {
+  font-size: $font-size-sm;
+}
+
+.font-size-md {
+  font-size: $font-size-md;
+}
+
+.font-size-lg {
+  font-size: $font-size-lg;
+}
+
+.font-size-xl {
+  font-size: $font-size-xl;
+}
+
+@media (min-width: $breakpoint-sm) {
+  .font-size-xs {
+    font-size: $font-size-sm;
+  }
+
+  .font-size-sm {
+    font-size: $font-size-md;
+  }
+
+  .font-size-md {
+    font-size: $font-size-lg;
+  }
+
+  .font-size-lg {
+    font-size: $font-size-xl;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .text-md-center {
+    text-align: center;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .font-size-xs {
+    font-size: $font-size-md;
+  }
+
+  .font-size-sm {
+    font-size: $font-size-lg;
+  }
+
+  .font-size-md {
+    font-size: $font-size-xl;
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .font-size-xs {
+    font-size: $font-size-lg;
+  }
+
+  .font-size-sm {
+    font-size: $font-size-xl;
+  }
+
+  .font-size-md {
+    font-size: $font-size-xl;
+  }
+}

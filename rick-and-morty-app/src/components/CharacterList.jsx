@@ -1,4 +1,5 @@
 import React from "react";
+import { memo } from "react";
 import Character from "./Character";
 
 function CharacterList(props) {
@@ -12,4 +13,4 @@ function CharacterList(props) {
   );
 }
 
-export default CharacterList;
+export default memo(CharacterList);

@@ -1,0 +1,30 @@
+.back-content {
+  margin-top: 23px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-icon {
+  width: 24px;
+  height: 24px;
+  transition: fill 100ms linear;
+
+  .back:hover &,
+  .back:focus & {
+    fill: #06b0c7;
+  }
+}
+
+.back-text {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  transition: color 100ms linear;
+
+  .back:hover &,
+  .back:focus & {
+    color: #06b0c7;
+  }
+}

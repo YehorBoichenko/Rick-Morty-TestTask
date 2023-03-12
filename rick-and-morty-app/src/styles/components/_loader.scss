@@ -1,0 +1,17 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  margin: 32px auto 0;
+  animation: rotate 2000ms infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-360deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

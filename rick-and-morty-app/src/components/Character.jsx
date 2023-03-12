@@ -8,8 +8,10 @@ function Character(props) {
       <div className="character-image">
         <img src={character.image} alt={character.name} />
       </div>
-      <div className="character-name">{character.name}</div>
-      <div className="character-species">{character.species}</div>
+      <div className="character-text">
+        <p className="character-name">{character.name}</p>
+        <p className="character-species">{character.species}</p>
+      </div>
     </Link>
   );
 }

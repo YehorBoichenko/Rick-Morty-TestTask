@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchCharacterById } from "../services/api";
-
+import Loader from "../components/Loader";
+import Goback from "../components/GoBack";
+import CharacterCard from "../components/CharacterCard";
 function CharacterDetail() {
   const [character, setCharacter] = useState(null);
   const { id } = useParams();
@@ -20,49 +22,17 @@ function CharacterDetail() {
     fetchCharacter();
   }, [id]);
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+  const prevPage = navigate.state?.from ?? "/";
 
   return (
-    <div className="character-detail">
+    <div className="container">
       {character ? (
         <>
-          <img
-            src={character.image}
-            alt={character.name}
-            className="character-detail__image"
-          />
-          <div className="character-detail__info">
-            <h1 className="character-detail__name">{character.name}</h1>
-            <p>
-              <strong>Status:</strong> {character.status}
-            </p>
-            <p>
-              <strong>Species:</strong> {character.species}
-            </p>
-            <p>
-              <strong>Type:</strong> {character.type || "Unknown"}
-            </p>
-            <p>
-              <strong>Gender:</strong> {character.gender}
-            </p>
-            <p>
-              <strong>Origin:</strong> {character.origin.name}
-            </p>
-            <p>
-              <strong>Location:</strong> {character.location.name}
-            </p>
-            <button
-              onClick={handleGoBack}
-              className="character-detail__back-btn"
-            >
-              Go back
-            </button>
-          </div>
+          <Goback to={prevPage} />
+          <CharacterCard character={character} />
         </>
       ) : (
-        <p>Loading character...</p>
+        <Loader />
       )}
     </div>
   );

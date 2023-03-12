@@ -35,42 +35,57 @@ const Pagination = ({
     pageNumbers.push(totalPages);
   }
 
-  console.log("pageNumbers", pageNumbers);
+  const handlePageClick = (pageNumber) => {
+    if (pageNumber === "...") {
+      if (currentPage < totalPages / 2) {
+        onChangePage(currentPage + 5);
+      } else {
+        onChangePage(currentPage - 5);
+      }
+    } else {
+      onChangePage(pageNumber);
+    }
+  };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = `${indexOfFirstItem + 1}-${
-    indexOfLastItem > totalItems ? totalItems : indexOfLastItem
-  }`;
+  const currentItems =
+    totalItems > 0
+      ? `${indexOfFirstItem + 1}-${
+          indexOfLastItem > totalItems ? totalItems : indexOfLastItem
+        } of ${totalItems}`
+      : "";
 
   return (
-    <nav>
-      <p className="pagination-label">
-        Showing {currentItems} of {totalItems}
-      </p>
-      <ul className="pagination">
-        <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+    <nav className="rc-pagination">
+      <div className="rc-pagination-count">Showing {currentItems}</div>
+      <ul>
+        <li
+          className={`rc-pagination-item ${
+            currentPage === 1 ? "rc-pagination-disabled" : ""
+          }`}
+        >
           <button
-            className="page-link"
+            className="rc-pagination-prev"
             onClick={() => onChangePage(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            Previous
+            <span>&#x21d0;</span>
           </button>
         </li>
 
         {pageNumbers.map((pageNumber, index) => (
           <li
             key={index}
-            className={`page-item ${
-              pageNumber === currentPage ? "active" : ""
-            } ${typeof pageNumber === "string" ? "disabled" : ""}`}
+            className={`rc-pagination-item ${
+              pageNumber === currentPage ? "rc-pagination-item-active" : ""
+            } ${
+              typeof pageNumber === "string" ? "rc-pagination-disabled" : ""
+            }`}
           >
             <button
-              className="page-link"
-              onClick={() =>
-                typeof pageNumber === "number" && onChangePage(pageNumber)
-              }
+              onClick={() => handlePageClick(pageNumber)}
+              disabled={typeof pageNumber === "string"}
             >
               {pageNumber}
             </button>
@@ -78,16 +93,16 @@ const Pagination = ({
         ))}
 
         <li
-          className={`page-item ${
-            currentPage === totalPages ? "disabled" : ""
+          className={`rc-pagination-item ${
+            currentPage === totalPages ? "rc-pagination-disabled" : ""
           }`}
         >
           <button
-            className="page-link"
+            className="rc-pagination-next"
             onClick={() => onChangePage(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            Next
+            <span>&#x21d2;</span>
           </button>
         </li>
       </ul>
