@@ -7,13 +7,12 @@ function sortCharactersByName(characters, searchQuery = "") {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
 
-    if (nameA === nameB) {
-      // If names are equal, sort by ID instead to ensure consistent order
-      return a.id - b.id;
-    } else if (nameA < nameB) {
+    if (nameA < nameB) {
       return -1;
-    } else {
+    } else if (nameA > nameB) {
       return 1;
+    } else {
+      return 0;
     }
   });
 

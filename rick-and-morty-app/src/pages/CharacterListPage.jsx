@@ -5,7 +5,6 @@ import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import { fetchCharacters } from "../services/api";
 import { sortCharactersByName } from "../utils/sort";
-import { saveToLocalStorage, getFromLocalStorage } from "../utils/storage";
 
 const CharacterListPage = () => {
   const [characters, setCharacters] = useState([]);
@@ -14,30 +13,29 @@ const CharacterListPage = () => {
   const [charactersPerPage] = useState(8);
 
   useEffect(() => {
-    const storedSearchTerm = getFromLocalStorage("searchTerm");
-    if (storedSearchTerm) {
-      setSearchTerm(storedSearchTerm);
+    const storedSearchTerm = localStorage.getItem("searchTerm") || "";
+    setSearchTerm(storedSearchTerm);
+
+    async function fetchData() {
+      const charactersData = await fetchCharacters();
+      const sortedCharacters = sortCharactersByName(charactersData);
+      setCharacters(sortedCharacters);
     }
 
-    const fetchCharactersData = async () => {
-      const charactersData = await fetchCharacters();
-      const sortedCharacters = sortCharactersByName(
-        charactersData,
-        storedSearchTerm
-      );
-      setCharacters(sortedCharacters);
-    };
-
-    fetchCharactersData();
+    fetchData();
   }, []);
 
   const handleSearch = (term) => {
     setSearchTerm(term);
-    saveToLocalStorage("searchTerm", term);
+    localStorage.setItem("searchTerm", term);
     setCurrentPage(1);
   };
 
-  const sortedCharacters = sortCharactersByName(characters, searchTerm);
+  const filteredCharacters = characters.filter((character) =>
+    character.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const sortedCharacters = sortCharactersByName(filteredCharacters);
 
   const indexOfLastCharacter = currentPage * charactersPerPage;
   const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;

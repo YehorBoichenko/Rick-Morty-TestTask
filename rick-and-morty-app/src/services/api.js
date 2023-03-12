@@ -41,6 +41,7 @@ function getCachedData(key) {
     if (!isExpired) {
       return data;
     }
+    localStorage.removeItem(key);
   }
   return null;
 }
