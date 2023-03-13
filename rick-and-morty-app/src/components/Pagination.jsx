@@ -70,19 +70,28 @@ const Pagination = ({
             onClick={() => onChangePage(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <span>&#x21d0;</span>
+            <span> &#x2770;</span>
           </button>
         </li>
 
-        {pageNumbers.map((pageNumber, index) => (
+        {pageNumbers.map((pageNumber, index, arr) => (
           <li
             key={index}
             className={`rc-pagination-item ${
               pageNumber === currentPage ? "rc-pagination-item-active" : ""
             } ${
               typeof pageNumber === "string" ? "rc-pagination-disabled" : ""
+            }  ${
+              pageNumber !== currentPage &&
+              pageNumber !== "..." &&
+              index !== 0 &&
+              index !== arr.length - 1
+                ? "hide"
+                : ""
             }`}
           >
+            {console.log("pageNumber:", pageNumber)}
+            {console.log(pageNumber !== "...")}
             <button
               onClick={() => handlePageClick(pageNumber)}
               disabled={typeof pageNumber === "string"}
@@ -102,7 +111,7 @@ const Pagination = ({
             onClick={() => onChangePage(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            <span>&#x21d2;</span>
+            <span>&#x2771;</span>
           </button>
         </li>
       </ul>

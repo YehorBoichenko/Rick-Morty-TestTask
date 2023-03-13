@@ -25,10 +25,13 @@ const CharacterListPage = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1); // Reset current page to 1 when the search term changes
+  }, [searchTerm]);
+
   const handleSearch = (term) => {
     setSearchTerm(term);
     localStorage.setItem("searchTerm", term);
-    setCurrentPage(1);
   };
 
   const filteredCharacters = characters.filter((character) =>
