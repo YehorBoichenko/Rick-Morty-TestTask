@@ -17,7 +17,7 @@
   z-index: 4;
 }
 
-span {
+.notfound {
   &:first-letter {
     letter-spacing: 12vmax;
   }
@@ -42,7 +42,7 @@ span {
   }
 }
 
-p {
+.notfound-text {
   text-align: center;
   font-style: italic;
   font-weight: 400;
