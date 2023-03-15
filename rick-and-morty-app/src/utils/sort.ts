@@ -1,4 +1,9 @@
-function sortCharactersByName(characters, searchQuery = "") {
+import { Character } from "../services/api";
+
+function sortCharactersByName(
+  characters: Character[],
+  searchQuery: string = ""
+): Character[] {
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchQuery.toLowerCase())
   );

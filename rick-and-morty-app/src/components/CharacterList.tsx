@@ -2,8 +2,16 @@ import React from "react";
 import { memo } from "react";
 import Character from "./Character";
 
-function CharacterList(props) {
-  const { characters } = props;
+interface CharacterListProps {
+  characters: {
+    id: number,
+    image: string,
+    name: string,
+    species: string,
+  }[];
+}
+
+const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
   return (
     <div className="character-list">
       {characters.map((character) => (
@@ -11,6 +19,6 @@ function CharacterList(props) {
       ))}
     </div>
   );
-}
+};
 
 export default memo(CharacterList);

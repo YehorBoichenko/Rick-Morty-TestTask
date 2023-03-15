@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
 import CharacterList from "../components/CharacterList";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
-import { fetchCharacters } from "../services/api";
+import { fetchCharacters, Character } from "../services/api";
 import { sortCharactersByName } from "../utils/sort";
 
-const CharacterListPage = () => {
-  const [characters, setCharacters] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [charactersPerPage] = useState(8);
+const CharacterListPage = (): JSX.Element => {
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [charactersPerPage] = useState<number>(8);
 
   useEffect(() => {
     const storedSearchTerm = localStorage.getItem("searchTerm") || "";
     setSearchTerm(storedSearchTerm);
 
-    async function fetchData() {
+    const fetchData = async (): Promise<void> => {
       const charactersData = await fetchCharacters();
       const sortedCharacters = sortCharactersByName(charactersData);
       setCharacters(sortedCharacters);
-    }
+    };
 
     fetchData();
   }, []);
@@ -29,7 +30,7 @@ const CharacterListPage = () => {
     setCurrentPage(1); // Reset current page to 1 when the search term changes
   }, [searchTerm]);
 
-  const handleSearch = (term) => {
+  const handleSearch = (term: string): void => {
     setSearchTerm(term);
     localStorage.setItem("searchTerm", term);
   };
@@ -49,7 +50,7 @@ const CharacterListPage = () => {
 
   const totalPages = Math.ceil(sortedCharacters.length / charactersPerPage);
 
-  const onChangePage = (pageNumber) => {
+  const onChangePage = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
   };
 
@@ -65,6 +66,7 @@ const CharacterListPage = () => {
         itemsPerPage={charactersPerPage}
         totalItems={sortedCharacters.length}
       />
+      <Footer author={""} website={""}/>
     </div>
   );
 };

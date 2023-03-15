@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useLocation, Navigate } from "react-router-dom";
 import { fetchCharacterById } from "../services/api";
 import Loader from "../components/Loader";
-import Goback from "../components/GoBack";
+import GoBack from "../components/GoBack";
 import CharacterCard from "../components/CharacterCard";
+import { Character } from "../services/api"; // assuming the Character type is defined in a types.ts file
+
 function CharacterDetail() {
-  const [character, setCharacter] = useState(null);
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const [character, setCharacter] = useState<Character | null>(null);
+  const { id } = useParams<{ id: string }>();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
-        const data = await fetchCharacterById(id);
+        const data = await fetchCharacterById(parseInt(id ?? ''));
         setCharacter(data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchCharacter();
+    if (id) {
+      fetchCharacter();
+    }
   }, [id]);
 
-  const prevPage = navigate.state?.from ?? "/";
+  const prevPage = location.state?.from ?? "/";
+
+  if (!id) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="container">
       {character ? (
         <>
-          <Goback to={prevPage} />
+          <GoBack to={prevPage} />
           <CharacterCard character={character} />
         </>
       ) : (

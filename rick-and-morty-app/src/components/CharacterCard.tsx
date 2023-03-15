@@ -1,6 +1,20 @@
 import React from "react";
 
-export default function CharacterCard({ character }) {
+interface CharacterCardProps {
+  character: {
+    image: string,
+    name: string,
+    gender: string,
+    status: string,
+    species: string,
+    origin: {
+      name: string,
+    },
+    type?: string,
+  };
+}
+
+const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
     <div className="card">
       <img src={character.image} alt={character.name} className="card__image" />
@@ -36,4 +50,6 @@ export default function CharacterCard({ character }) {
       </ul>
     </div>
   );
-}
+};
+
+export default CharacterCard;

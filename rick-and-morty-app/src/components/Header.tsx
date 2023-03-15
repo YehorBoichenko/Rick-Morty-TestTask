@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "../images/PngItem.jpg";
-const Header = () => {
+import logo from "../images/Item.jpg";
+
+const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__img-container">

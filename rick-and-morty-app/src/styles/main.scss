@@ -1,14 +1,19 @@
+// Main imports
 @import "./base/base";
 @import "./base/typography";
 @import "./base/utilities";
 @import "./layout/layout";
+// Components
 @import "./components/header";
 @import "./components/searchbar";
 @import "./components/character";
 @import "./components/characterlist";
 @import "./components/pagination";
-@import "./pages/character-list-page";
-@import "./pages/character-detail";
 @import "./components/loader";
 @import "./components/goback";
 @import "./components/charactercard";
+@import "./components/footer";
+// Pages
+@import "./pages/character-list-page";
+@import "./pages/character-detail";
+@import "./pages/notFound";
