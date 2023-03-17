@@ -12,15 +12,8 @@ React component that displays a list of characters.
 import React from "react";
 import { memo } from "react";
 import Character from "./Character";
+import { CharacterListProps } from "../types/types";
 
-interface CharacterListProps {
-  characters: {
-    id: number,
-    image: string,
-    name: string,
-    species: string,
-  }[];
-}
 
 const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
   return (

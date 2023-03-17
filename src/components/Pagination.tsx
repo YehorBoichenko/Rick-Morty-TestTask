@@ -8,13 +8,7 @@
  * @returns A React functional component that renders the Pagination component.
  */
 import React from "react";
-interface Props {
-  currentPage: number;
-  totalPages: number;
-  onChangePage: (pageNumber: number) => void;
-  itemsPerPage: number;
-  totalItems: number;
-}
+import { Props } from "../types/types";
 
 const Pagination: React.FC<Props> = ({
   currentPage,

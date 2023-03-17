@@ -8,12 +8,10 @@ A search bar component with a filter input field and an icon
 
 import React, { ChangeEvent } from "react";
 import LeadingIcon from "../images/LeadingIcon.png";
-interface Props {
-value: string;
-onChange: (value: string) => void;
-}
+import { SearchProps } from "../types/types";
 
-function SearchBar(props: Props) {
+
+function SearchBar(props: SearchProps) {
 const { value, onChange } = props;
 
 const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {

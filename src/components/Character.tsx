@@ -11,15 +11,8 @@ React component that displays a single character's information
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { CharacterProps } from "../types/types";
 
-interface CharacterProps {
-  character: {
-    id: number,
-    image: string,
-    name: string,
-    species: string,
-  };
-}
 
 const Character: React.FC<CharacterProps> = ({ character }) => {
   return (

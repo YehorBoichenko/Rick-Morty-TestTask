@@ -8,9 +8,7 @@ React component that represents a back link with an icon and text
 import React from "react";
 import { Link } from "react-router-dom";
 import BackIcon from "../images/Back.svg";
-interface BackLinkProps {
-  to: string;
-}
+import { BackLinkProps } from "../types/types";
 
 const BackLink: React.FC<BackLinkProps> = ({ to }) => {
   return (

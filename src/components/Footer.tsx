@@ -6,10 +6,8 @@ A React component that displays the website footer
 @returns {JSX.Element} - A React component that displays the website footer with author and website information
 */
 import React from "react";
-interface FooterProps {
-  author: string;
-  website: string;
-}
+import { FooterProps } from "../types/types";
+
 
 
 const Footer: React.FC<FooterProps> = () => {

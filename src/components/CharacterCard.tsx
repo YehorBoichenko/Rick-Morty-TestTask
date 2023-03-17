@@ -10,19 +10,8 @@ A React component that displays a single character's information
 @returns {JSX.Element} - A React component that displays the character's information
 */
 import React from "react";
-interface CharacterCardProps {
-  character: {
-    image: string,
-    name: string,
-    gender: string,
-    status: string,
-    species: string,
-    origin: {
-      name: string,
-    },
-    type?: string,
-  };
-}
+import {CharacterCardProps} from "../types/types";
+
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
