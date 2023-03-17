@@ -1,5 +1,13 @@
+/**
+ * The Pagination component is used to display and navigate through a large set of items that are paginated.
+ * @param currentPage - The current active page number.
+ * @param totalPages - The total number of pages available.
+ * @param onChangePage - The function to be called when a page is clicked.
+ * @param itemsPerPage - The number of items to be displayed per page.
+ * @param totalItems - The total number of items to be paginated.
+ * @returns A React functional component that renders the Pagination component.
+ */
 import React from "react";
-
 interface Props {
   currentPage: number;
   totalPages: number;
@@ -15,6 +23,13 @@ const Pagination: React.FC<Props> = ({
   itemsPerPage,
   totalItems,
 }) => {
+  /**
+
+Generate page numbers to be displayed in the pagination component
+@param totalPages - The total number of pages
+@param currentPage - The current page number
+@returns An array of page numbers or ellipsis to be displayed
+*/
   const pageNumbers: (number | string)[] = [];
 
   if (totalPages <= 8) {
@@ -42,7 +57,11 @@ const Pagination: React.FC<Props> = ({
     pageNumbers.push("...");
     pageNumbers.push(totalPages);
   }
+/**
 
+Handle the click of a page number button
+@param pageNumber - The page number or ellipsis that was clicked
+*/
   const handlePageClick = (pageNumber: number | string) => {
     if (pageNumber === "...") {
       if (currentPage < totalPages / 2) {

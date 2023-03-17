@@ -1,5 +1,15 @@
-import React from "react";
+/**
 
+A React component that displays a single character's information
+@param {Object} props - Component props
+@param {Object} props.character - An object representing the character to be displayed
+@param {number} props.character.id - The id of the character
+@param {string} props.character.image - The url of the character's image
+@param {string} props.character.name - The name of the character
+@param {string} props.character.species - The species of the character
+@returns {JSX.Element} - A React component that displays the character's information
+*/
+import React from "react";
 interface CharacterCardProps {
   character: {
     image: string,

@@ -1,11 +1,12 @@
 import React from 'react';
+
 /**
  * Component to render a 404 Not Found page.
  */
 
 const NotFound = () => {
   return (
-    <div className='container'>
+
           <div className="background-img">
       <div className="space"></div>
       <div className="wrapper">
@@ -19,7 +20,7 @@ const NotFound = () => {
         <button type="button" className='gethomeBtn'>GET ME HOME</button>
       </div>
     </div>
-    </div>
+
 
   );
 };
