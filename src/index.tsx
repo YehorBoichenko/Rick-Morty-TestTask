@@ -7,7 +7,7 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <BrowserRouter basename="rick-and-morty">
+      <BrowserRouter >
         <App />
       </BrowserRouter>
     </React.StrictMode>
