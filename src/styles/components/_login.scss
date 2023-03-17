@@ -1,0 +1,52 @@
+.user {
+  position: absolute;
+  top: 23px;
+  right: 24px;
+  text-align: end;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(0, 0, 0, 0.87);
+
+  @media screen and (min-width: 1440px) {
+    top: 21px;
+    right: 50px;
+  }
+}
+
+.user-logIn {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 4px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+  transition: transform 200ms linear;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+}
+
+.user_name {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.user-logo {
+  width: 30px;
+}
+
+.user_logOut {
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+  transition: transform 200ms linear;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+}

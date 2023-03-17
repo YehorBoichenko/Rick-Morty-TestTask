@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CharacterList from "../components/CharacterList";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import  Hero  from "../components/Hero";
+import Login from "../components/Login";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import { fetchCharacters, Character } from "../services/api";
@@ -55,8 +56,11 @@ const CharacterListPage = (): JSX.Element => {
   };
 
   return (
-    <div className="container">
-      <Header />
+    <>
+       <header><Login/></header>
+      <main>
+            <div className="container">
+      <Hero />
       <SearchBar value={searchTerm} onChange={handleSearch} />
       <CharacterList characters={currentCharacters} />
       <Pagination
@@ -68,6 +72,9 @@ const CharacterListPage = (): JSX.Element => {
       />
       <Footer author={""} website={""}/>
     </div>
+      </main>
+    </>
+
   );
 };
 

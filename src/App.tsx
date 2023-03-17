@@ -1,22 +1,28 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CharacterListPage from "./pages/CharacterListPage";
-import CharacterDetail from "./pages/CharacterDetail";
-import "./styles/main.scss";
-import NotFound from "./pages/NotFound";
+import React from 'react';
+import { lazy, Suspense } from 'react';
+import {  Routes, Route } from "react-router-dom";
 
-function App() {
+
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+const CharacterListPage = lazy(() => import('./pages/CharacterListPage'));
+const CharacterDetail = lazy(() => import('./pages/CharacterDetail'));
+
+export const App =() => {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<CharacterListPage />} />
-          <Route path="/character/:id" element={<CharacterDetail />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-    </Router>
+    <>
+      <Suspense>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<CharacterListPage />} />
+            <Route path="/character/:id" element={<CharacterDetail />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </Suspense>
+    </>
   );
 }
 
-export default App;
+
+

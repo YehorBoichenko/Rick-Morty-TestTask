@@ -17,7 +17,7 @@ interface CharacterCardProps {
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
     <div className="card">
-      <img src={character.image} alt={character.name} className="card__image" />
+      <img loading="lazy" src={character.image} alt={character.name} className="card__image" />
       <h1 className="card__name">{character.name}</h1>
       <h2 className="card__title">Informations</h2>
       <ul className="info">
