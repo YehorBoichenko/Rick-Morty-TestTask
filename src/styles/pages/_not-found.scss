@@ -12,23 +12,23 @@
   transform: translateY(-50%);
   left: 0;
   right: 0;
-  width: fit-content;
+  max-width: 90%;
   text-align: center;
   z-index: 4;
 }
 
 .notfound {
   &:first-letter {
-    letter-spacing: 12vmax;
+    letter-spacing: 6vmax;
   }
   position: relative;
   color: #fff;
   font-weight: 900;
-  font-size: 20.4em;
-  display: block;
+  font-size: 14em;
+  display: inline-block;
   overflow: hidden;
-  width: fit-content;
-  height: max-content;
+  height: 1em;
+  width: 100%;
   &:before {
     content: "";
     background-image: url("https://staticdelivery.nexusmods.com/mods/1151/images/528-0-1447526230.png");
@@ -49,6 +49,7 @@
   color: #fff;
   margin-top: 0;
   line-height: 22px;
+  font-size: 16px;
 }
 
 .gethomeBtn {
@@ -83,7 +84,6 @@
 }
 
 .space {
-  // position: absolute;
   width: 400vw;
   height: 400vh;
   top: 50%;

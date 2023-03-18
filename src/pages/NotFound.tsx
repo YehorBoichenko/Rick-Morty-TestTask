@@ -1,6 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {
+  const navigate = useNavigate();
+
+  const handleGetHome = () => {
+    navigate('/');
+  };
+
   return (
     <div className="background-img">
       <div className="space"></div>
@@ -12,7 +19,7 @@ const NotFound = () => {
           The page you are trying to search has been <br /> moved to another
           universe.
         </p>
-        <button type="button" className='gethomeBtn'>GET ME HOME</button>
+        <button type="button" className='gethomeBtn' onClick={handleGetHome}>GET ME HOME</button>
       </div>
     </div>
   );

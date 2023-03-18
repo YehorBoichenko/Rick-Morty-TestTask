@@ -111,10 +111,6 @@ Handle the click of a page number button
         : ""
     }`}
   >
-    <>
-      {console.log("pageNumber:", pageNumber)}
-      {console.log(pageNumber !== "...")}
-    </>
     <button
       onClick={() => handlePageClick(pageNumber)}
       disabled={typeof pageNumber === "string"}
