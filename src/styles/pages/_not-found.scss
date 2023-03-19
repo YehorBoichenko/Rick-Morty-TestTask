@@ -5,8 +5,12 @@
   overflow: hidden;
 }
 
+/* Mobile devices */
 .wrapper {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: auto;
   top: 50%;
   transform: translateY(-50%);
@@ -24,10 +28,10 @@
   position: relative;
   color: #fff;
   font-weight: 900;
-  font-size: 14em;
+  font-size: 7.5em;
   display: inline-block;
   overflow: hidden;
-  height: 1em;
+  height: 0.9em;
   width: 100%;
   &:before {
     content: "";
@@ -35,6 +39,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
+    display: block;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -48,19 +53,91 @@
   font-weight: 400;
   color: #fff;
   margin-top: 0;
-  line-height: 22px;
-  font-size: 16px;
+  line-height: 18px;
+  font-size: 12px;
 }
 
 .gethomeBtn {
   background-color: #f96e4d;
   border: 0;
-  padding: 11px 22px;
+  padding: 7px 16px;
   border-radius: 50px;
   color: #fff;
   margin-top: 10px;
   cursor: pointer;
   font-weight: 900;
+}
+
+/* Tablets */
+@media (min-width: $breakpoint-sm) {
+  .notfound {
+    font-size: 10em;
+    height: 1.1em;
+  }
+
+  .notfound-text {
+    line-height: 24px;
+    font-size: 14px;
+  }
+
+  .gethomeBtn {
+    padding: 9px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Small desktops */
+@media (min-width: $breakpoint-md) {
+  .notfound {
+    font-size: 12em;
+    height: 1.2em;
+  }
+
+  .notfound-text {
+    line-height: 26px;
+    font-size: 16px;
+  }
+
+  .gethomeBtn {
+    padding: 11px 22px;
+    font-size: 16px;
+  }
+}
+
+/* Medium desktops */
+@media (min-width: $breakpoint-lg) {
+  .notfound {
+    font-size: 14em;
+    height: 1.3em;
+  }
+
+  .notfound-text {
+    line-height: 28px;
+    font-size: 18px;
+  }
+
+  .gethomeBtn {
+    padding: 13px 24px;
+    font-size: 18px;
+  }
+}
+
+/* Large desktops */
+@media (min-width: $breakpoint-xl) {
+  .notfound {
+    font-size: 16em;
+    height: 1.4em;
+  }
+
+  .notfound-text {
+    line-height: 32px;
+    font-size: 20px;
+  }
+
+  .gethomeBtn {
+    padding: 15px 26px;
+    font-size: 20px;
+  }
 }
 
 @keyframes spin {
@@ -84,8 +161,8 @@
 }
 
 .space {
-  width: 400vw;
-  height: 400vh;
+  width: 430vw;
+  height: 470vh;
   top: 50%;
   left: 50%;
   z-index: 1;
